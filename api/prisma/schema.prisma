@@ -34,17 +34,7 @@ model Carro {
   combustivel Combustiveis @default(FLEX)
   marca       Marca    @relation(fields: [marcaId], references: [id])
   marcaId     Int
-  fotos       Foto[]
   @@map("carros")
-}
-
-model Foto {
-  id          Int      @id @default(autoincrement())
-  descricao   String   @db.VarChar(30)
-  codigoFoto  String   @db.LongText
-  carro       Carro    @relation(fields: [carroId], references: [id])
-  carroId     Int
-  @@map("fotos")
 }
 
 enum Combustiveis {
@@ -54,4 +44,3 @@ enum Combustiveis {
   DIESEL
   ELETRICIDADE
 }
-

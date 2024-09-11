@@ -3,16 +3,16 @@ import { InputPesquisa } from "@/components/InputPesquisa"
 import { ItemCarros } from "@/components/ItemCarros";
 import { CarroI } from "@/utils/types/carros";
 import { useEffect, useState } from "react";
-import { Toaster } from 'sonner'
+import { Toaster, toast } from 'sonner'
 
 export default function Home() {
   const [carros, setCarros] = useState<CarroI[]>([])
 
-  useEffect(() => {
+  useEffect(() =>{
     async function buscaDados() {
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/carros`)
       const dados = await response.json()
-      // console.log(dados)
+      //console.log(dados)
       setCarros(dados)
     }
     buscaDados()
@@ -35,6 +35,7 @@ export default function Home() {
 
       </section>
       <Toaster position="top-right" richColors />
+
     </main>
   );
 }

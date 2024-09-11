@@ -1,16 +1,12 @@
 import { CarroI } from "@/utils/types/carros";
 import Link from "next/link";
 
-export function ItemCarros({ data }: { data: CarroI }) {
+export function ItemCarros({data}: {data: CarroI}) {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-
-      <Link href={`/detalhes/${data.id}`}>
-        <img className="rounded-t-lg"
-          src={data.foto}
-          alt={`Imagem do ${data.modelo}`} />
-      </Link>
-
+      <img className="rounded-t-lg" 
+        src={data.foto} 
+        alt={`Imagem do ${data.modelo}`} />
       <div className="p-5">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {data.marca.nome} {data.modelo}
@@ -20,7 +16,7 @@ export function ItemCarros({ data }: { data: CarroI }) {
         </p>
         <p className="mb-3 font-bold text-gray-700 dark:text-gray-400">
           R$ {Number(data.preco).toLocaleString("pt-br",
-            { minimumFractionDigits: 2 }
+            {maximumFractionDigits: 2}
           )}
         </p>
         <p className="mb-3 text-sm text-gray-700 dark:text-gray-400 truncate">

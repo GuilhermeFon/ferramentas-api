@@ -23,11 +23,11 @@ const prisma = new PrismaClient({
   ],
 })
 
-prisma.$on('query', (e) => {
-  console.log('Query: ' + e.query)
-  console.log('Params: ' + e.params)
-  console.log('Duration: ' + e.duration + 'ms')
-})
+prisma.$on('query', (e: any) => {
+  console.log('Query: ' + e.query);
+  console.log('Params: ' + e.params);
+  console.log('Duration: ' + e.duration + 'ms');
+});
 
 const router = Router()
 
@@ -90,5 +90,6 @@ router.put("/:id", async (req, res) => {
     res.status(400).json(error)
   }
 })
+
 
 export default router

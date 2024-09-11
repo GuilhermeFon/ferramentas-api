@@ -8,7 +8,8 @@ router.get("/", async (req, res) => {
   try {
     const carros = await prisma.carro.findMany({
       include: {
-        marca: true
+        marca: true, 
+       
       }
     })
     res.status(200).json(carros)
@@ -20,7 +21,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { modelo, ano, preco, combustivel, km, foto, acessorios, marcaId } = req.body
 
-  if (!modelo || !ano || !preco || !combustivel || !km || !foto || !acessorios || !marcaId) {
+  if (!modelo || !ano || !preco || !combustivel || !km || !foto || !acessorios || !marcaId ) {
     res.status(400).json({ "erro": "Informe modelo, ano, preco, combustivel, km, foto, acessorios e marcaId" })
     return
   }
@@ -52,7 +53,7 @@ router.put("/:id", async (req, res) => {
   const { id } = req.params
   const { modelo, ano, preco, combustivel, km, foto, acessorios, marcaId } = req.body
 
-  if (!modelo || !ano || !preco || !combustivel || !km || !foto || !acessorios || !marcaId) {
+  if (!modelo || !ano || !preco || !combustivel || !km || !foto || !acessorios || !marcaId ) {
     res.status(400).json({ "erro": "Informe modelo, ano, preco, combustivel, km, foto, acessorios e marcaId" })
     return
   }
@@ -69,63 +70,65 @@ router.put("/:id", async (req, res) => {
 })
 
 router.get("/pesquisa/:termo", async (req, res) => {
-  const { termo } = req.params
 
-  // tenta converter o termo em número
-  const termoNumero = Number(termo)
+const { termo } = req.params
 
-  // se a conversão gerou um NaN (Not a Number)
-  if (isNaN(termoNumero)) {
-    try {
-      const carros = await prisma.carro.findMany({
-        include: {
-          marca: true
-        },
-        where: {
-          OR: [
-            { modelo: { contains: termo }},
-            { marca: { nome: termo }}
-          ]
-        }
-      })
-      res.status(200).json(carros)
-    } catch (error) {
-      res.status(400).json(error)
-    }
-  } else {
-    try {
-      const carros = await prisma.carro.findMany({
-        include: {
-          marca: true
-        },
-        where: {
-          OR: [
-            { preco: { lte: termoNumero }},
-            { ano: termoNumero }
-          ]
-        }
-      })
-      res.status(200).json(carros)
-    } catch (error) {
-      res.status(400).json(error)
-    }
+const termoNumero = Number(termo)
+
+if (isNaN(termoNumero)) {
+  try {
+    const carros = await prisma.carro.findMany({
+      include: {
+        marca: true 
+      },
+      where: {
+        OR: [
+          { modelo: { contains: termo}},
+          { marca: { nome: termo}}
+        ]
+      }
+    })
+    res.status(200).json(carros)
+  } catch (error) {
+    res.status(400).json(error)
   }
-})
+} else {
+  try {
+    const carros = await prisma.carro.findMany({
+      include: {
+        marca: true 
+      },
+      where: {
+        OR: [
+          { preco: { lte: termoNumero }},
+          { ano: termoNumero }
+        ]
+      }
+    })
+    res.status(200).json(carros)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
 
+ 
 router.get("/:id", async (req, res) => {
   const { id } = req.params
 
   try {
-    const carro = await prisma.carro.findUnique({
-      where: { id: Number(id)},
+    const carros = await prisma.carro.findUnique({
+      where: {id: Number(id)},
       include: {
-        marca: true
+        marca: true, 
+       
       }
     })
-    res.status(200).json(carro)
+    res.status(200).json(carros)
   } catch (error) {
     res.status(400).json(error)
   }
+})
+
 })
 
 export default router
