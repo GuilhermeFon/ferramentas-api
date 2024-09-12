@@ -7,7 +7,7 @@ export function Header() {
         <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="./logo.webp" className="h-16" alt="Fusca" />
           <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
-            Revenda Avenida
+            Loja da Pegada
           </span>
         </Link>
         <div className="flex items-center space-x-6 rtl:space-x-reverse">

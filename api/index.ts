@@ -3,7 +3,7 @@ import cors from 'cors'
 
 
 import marcasRoutes from './routes/marcas'
-import carrosRoutes from './routes/carros'
+import sapatosRoutes from './routes/sapatos'
 const app = express()
 const port = 3004
 
@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use("/marcas", marcasRoutes)
-app.use("/carros", carrosRoutes)
+app.use("/sapatos", sapatosRoutes)
 
 app.get('/', (req, res) => {
   res.send('API: Sistema de Controle ded Veículos')

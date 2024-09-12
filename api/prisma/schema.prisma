@@ -16,31 +16,21 @@ datasource db {
 model Marca {
   id        Int      @id @default(autoincrement())
   nome      String   @db.VarChar(30)
-  carros    Carro[]
+  sapatos    Sapato[]
   @@map("marcas")
 }
 
-model Carro {
+model Sapato {
   id          Int      @id @default(autoincrement())
   modelo      String   @db.VarChar(60)
-  ano         Int      @db.SmallInt
   preco       Decimal  @db.Decimal(10, 2)
-  km          Int      @db.MediumInt
   destaque    Boolean  @default(true)
   foto        String   
-  acessorios  String?
+  descricao  String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  combustivel Combustiveis @default(FLEX)
   marca       Marca    @relation(fields: [marcaId], references: [id])
   marcaId     Int
-  @@map("carros")
+  @@map("sapatos")
 }
 
-enum Combustiveis {
-  FLEX
-  GASOLINA
-  ALCOOL
-  DIESEL
-  ELETRICIDADE
-}

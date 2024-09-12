@@ -1,4 +1,4 @@
-import { CarroI } from "@/utils/types/carros"
+import { SapatoI } from "@/utils/types/sapatos"
 import {useForm} from "react-hook-form"
 import { toast } from "sonner"
 
@@ -7,10 +7,10 @@ type Inputs = {
 }
 
 type InputPesquisaProps = {
-  setCarros: React.Dispatch<React.SetStateAction<CarroI[]>>
+  setSapatos: React.Dispatch<React.SetStateAction<SapatoI[]>>
 }
 
-export function InputPesquisa({setCarros}: InputPesquisaProps) {
+export function InputPesquisa({setSapatos}: InputPesquisaProps) {
   const {register, handleSubmit, reset } = useForm<Inputs>()
 
   async function enviaPesquisa(data: Inputs) {
@@ -20,20 +20,20 @@ export function InputPesquisa({setCarros}: InputPesquisaProps) {
       return
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/carros/pesquisa/${data.termo}`)
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/sapatos/pesquisa/${data.termo}`)
     const dados = await response.json()
     if (dados.length == 0) {
       toast.error("Não há veiculos com o termo pesquisado")
       reset({termo:""})
       return
     }
-    setCarros(dados)
+    setSapatos(dados)
   }
 
   async function mostraDestaques() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/carros`)
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/sapatos`)
     const dados = await response.json()
-    setCarros(dados)
+    setSapatos(dados)
     reset({termo: ""})
   }
 
@@ -50,7 +50,7 @@ export function InputPesquisa({setCarros}: InputPesquisaProps) {
             </svg>
           </div>
           <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                 placeholder="Qual veículo você procura?(modelo, marca, ano ou preço máximo)" 
+                 placeholder="Qual veículo você procura?(modelo, marca ou preço máximo)" 
                  required
                  {...register("termo")} />
           <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
