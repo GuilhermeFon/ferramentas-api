@@ -13,7 +13,7 @@ export function ItemSapatos({data}: {data: SapatoI}) {
         </h5>
         <p className="mb-3 font-bold text-gray-700 dark:text-gray-400">
           R$ {Number(data.preco).toLocaleString("pt-br",
-            {maximumFractionDigits: 2}
+            //{maximumFractionDigits: 2}
           )}
         </p>
         <p className="mb-3 text-sm text-gray-700 dark:text-gray-400 truncate">

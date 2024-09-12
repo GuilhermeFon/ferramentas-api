@@ -27,7 +27,7 @@ export default function Home() {
       <InputPesquisa setSapatos={setSapatos} />
 
       <section className="max-w-screen-xl mx-auto">
-        <h1 className="mb-5 mt-2 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Tênis <span className="underline underline-offset-3 decoration-8 decoration-orange-400 dark:decoration-orange-600">em destaque</span></h1>
+        <h1 className="mb-5 mt-2 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-black">Tênis em <span className="underline underline-offset-3 decoration-8 decoration-red-500 dark:decoration-red-600">destaque</span></h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {listaSapatos}

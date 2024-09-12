@@ -23,7 +23,7 @@ export function InputPesquisa({setSapatos}: InputPesquisaProps) {
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/sapatos/pesquisa/${data.termo}`)
     const dados = await response.json()
     if (dados.length == 0) {
-      toast.error("Não há veiculos com o termo pesquisado")
+      toast.error("Não há produto com o termo pesquisado")
       reset({termo:""})
       return
     }
@@ -50,7 +50,7 @@ export function InputPesquisa({setSapatos}: InputPesquisaProps) {
             </svg>
           </div>
           <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                 placeholder="Qual veículo você procura?(modelo, marca ou preço máximo)" 
+                 placeholder="Qual tênis você procura?" 
                  required
                  {...register("termo")} />
           <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -61,7 +61,7 @@ export function InputPesquisa({setSapatos}: InputPesquisaProps) {
 
       <button type="button" className="ms-3 mt-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
       onClick={mostraDestaques}>
-        Veículos em Destaque
+        Produtos em Destaque
       </button>
 
     </section>

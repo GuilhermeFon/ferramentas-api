@@ -115,14 +115,14 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params
 
   try {
-    const sapatos = await prisma.sapato.findUnique({
+    const sapato = await prisma.sapato.findUnique({
       where: {id: Number(id)},
       include: {
         marca: true, 
        
       }
     })
-    res.status(200).json(sapatos)
+    res.status(200).json(sapato)
   } catch (error) {
     res.status(400).json(error)
   }
