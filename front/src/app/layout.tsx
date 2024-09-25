@@ -3,7 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "Loja da pegada",
+  title: "Mão na roda",
   description: "Loja de tênis originais",
   keywords: ['loja', 'sapatos', 'veículos', 'sapatos usados']
 };

@@ -1,0 +1,5 @@
+{/* Contact Info */}
+          <div className="flex flex-col items-center">
+            <span className="text-sm">24*7 EMERGENCY SERVICES</span>
+            <span className="text-2xl font-bold text-blue-900">569-236-154-22</span>
+          </div>
